@@ -28,14 +28,6 @@
         <div class="row">
             <!-- Blog Entries Column -->
             <div class="col-md-8">
-                {% for post in posts %}
-                <p class="lead">
-
-                <p>published: {{ post.published_date }}</p>
-                <h1><a href="">{{ post.title }}</a></h1>
-                <p>{{ post.text|linebreaks }}</p>
-            </div>
-            {% endfor %}
 
             <h1 class="page-header">
                 VOLATUM
@@ -60,7 +52,7 @@
             <div id="map"></div>
             <script>
                   function initMap() {
-                    var myLatLng = { lat: Airports.latitude, lng: Airports.longitude };
+                      var myLatLng = { lat: {{ airport.latitude }}, lng:{{ airport.longitude }}};
 
                     var map = new google.maps.Map(document.getElementById('map'), {
                       zoom: 4,
@@ -70,7 +62,7 @@
                     var marker = new google.maps.Marker({
                       position: myLatLng,
                       map: map,
-                      title: 'Airports.name'
+                      title: '{{ airport.name }}'
                     });
                   }
             </script>
