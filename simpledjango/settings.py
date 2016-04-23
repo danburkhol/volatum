@@ -30,7 +30,7 @@ DATABASES = {
 SECRET_KEY = '+we06q!vu7)e-01^o@_4$*2$q$zh2u9=k08yfzhp0@^iws!gto'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = True
 
@@ -46,7 +46,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'simple',
+    'volatum'
 )
 
 MIDDLEWARE_CLASSES = (
