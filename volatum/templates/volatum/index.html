@@ -44,8 +44,9 @@
 
             <!-- Airport Warning Post -->
             {% for airport in input %}
+            <i class="fa fa-plane fa-2x" aria-hidden="true"></i>
             <h2>
-                <i class="fa fa-plane" aria-hidden="true"></i>{{ airport.name }}
+                {{ airport.name }}
             </h2>
             <p class="lead">
                 Type: Potential No-Fly Zone
