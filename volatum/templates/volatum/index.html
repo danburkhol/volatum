@@ -17,9 +17,6 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    #map {
-    height: 200px;
-    }
 
 </head>
 <body>
@@ -40,24 +37,26 @@
             <h1 class="page-header">
                 VOLATUM
             </h1>
+
+
             <!-- Airport Warning Post -->
-            {% for Airports in airports %}
+            {% for airport in input %}
             <h2>
-                <i class="fa fa-plane" aria-hidden="true"></i>Airports.name
+                <i class="fa fa-plane" aria-hidden="true"></i>{{ airport.name }}
             </h2>
             <p class="lead">
                 Type: Potential No-Fly Zone
             </p>
             <hr>
             <p>
-                Latitude:Airports.latitude
-                Longitude:Airports.longitude
+                Latitude: {{ airport.latitude }}
+                Longitude: {{ airport.longitude }}
             </p>
 
             <div id="map"></div>
             <script>
                   function initMap() {
-                      var myLatLng = { lat: Airports.latitude, lng: Airports.longitude };
+                    var myLatLng = { lat: Airports.latitude, lng: Airports.longitude };
 
                     var map = new google.maps.Map(document.getElementById('map'), {
                       zoom: 4,
@@ -77,6 +76,9 @@
             <hr>
             {% endfor %}
             <!-- END Airport Warning Post -->
+
+
+
             <!-- Second Warning Post -->
             <h2>
                 WARNING

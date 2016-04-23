@@ -22,6 +22,18 @@ DATABASES = {
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
+#
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+#        'NAME': 'mypostgres',                      # Or path to database file if using sqlite3.
+#        'USER': 'u7045f60ce23c46059d542e4904960306',                      # Not used with sqlite3.
+#        'PASSWORD': 'p29110cc08ebb4e40a0a99f99156979b1',                  # Not used with sqlite3.
+#        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+#        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+#    }
+#}
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -30,12 +42,9 @@ DATABASES = {
 SECRET_KEY = '+we06q!vu7)e-01^o@_4$*2$q$zh2u9=k08yfzhp0@^iws!gto'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = True
-
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
