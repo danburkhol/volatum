@@ -40,23 +40,66 @@ def next_coordinate(latitude, longitude, distance = 0.5, bearing = 0):
 
 
 	#collects elevation data around the drone, returns a list of dictionaries
-def look_elevation_ahead(latitude, longitude, distance = 0.5, bearing = 0):
+def look_elevation_ahead(latitude, longitude, bearing = 0, distance = 5):
 	#list containing dictionaries with the coordinates and coresponding elevation
 	elevations_ahead = []
 
-	#collecting data
-	for i in range(0,361,36):
-		nextCoordinates = next_coordinate(latitude, longitude, distance, i)
-		elevations_ahead.append(get_elevetion(nextCoordinates[0], nextCoordinates[1]))
+	#collecting data at various distances
+	for degree in range(-20 + bearing, 21 + bearing):
+		if degree % 10 == 0:
+			distance = 2.5
+			nextCoordinates = next_coordinate(latitude, longitude, distance, degree)
+			elevations_ahead.append(get_elevetion(nextCoordinates[0], nextCoordinates[1]))
+		if degree % 20 == 0:
+			distance = 1.0
+			nextCoordinates = next_coordinate(latitude, longitude, distance, degree)
+			elevations_ahead.append(get_elevetion(nextCoordinates[0], nextCoordinates[1]))
+		if degree % 5 == 0:
+			distance = 5.0
+			nextCoordinates = next_coordinate(latitude, longitude, distance, degree)
+			elevations_ahead.append(get_elevetion(nextCoordinates[0], nextCoordinates[1]))
+
 	return elevations_ahead
+
+def elevation_data(latitude = 27.96191289, longitude = -82.4443672):
+	gives_me_all_the_data = []
+	for degree in range(0,361):
+		if degree % 36 == 0:
+			distance = 0.5
+			nextCoordinates = next_coordinate(latitude, longitude, distance, degree)
+			gives_me_all_the_data.append(get_elevetion(nextCoordinates[0], nextCoordinates[1]))
+		if degree % 20 == 0:
+			distance = 1.0
+			nextCoordinates = next_coordinate(latitude, longitude, distance, degree)
+			gives_me_all_the_data.append(get_elevetion(nextCoordinates[0], nextCoordinates[1]))
+		if degree % 12 == 0:
+			distance = 2.0
+			nextCoordinates = next_coordinate(latitude, longitude, distance, degree)
+			gives_me_all_the_data.append(get_elevetion(nextCoordinates[0], nextCoordinates[1]))
+		if degree % 10 == 0:
+			distance = 3.0
+			nextCoordinates = next_coordinate(latitude, longitude, distance, degree)
+			gives_me_all_the_data.append(get_elevetion(nextCoordinates[0], nextCoordinates[1]))
+		if degree % 5 == 0:
+			distance = 4.0
+			nextCoordinates = next_coordinate(latitude, longitude, distance, degree)
+			gives_me_all_the_data.append(get_elevetion(nextCoordinates[0], nextCoordinates[1]))	
+		distance = 5.0
+		nextCoordinates = next_coordinate(latitude, longitude, distance, degree)
+		gives_me_all_the_data.append(get_elevetion(nextCoordinates[0], nextCoordinates[1]))
+	return gives_me_all_the_data
+
+
+
 
 
 if __name__ == '__main__':
 
 	mcoordinates = (43.8791, 103.4591)
-	elevations = look_elevation_ahead(mcoordinates[0], mcoordinates[1])
+	elevations = elevation_data()
 	for elevation in elevations:
 		print(elevation)
+
 
 
 
