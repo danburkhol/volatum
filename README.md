@@ -1,65 +1,89 @@
-# django-starter-template #
+#djangobluemix
 
-An easy to use project template for Django 1.8 that follows best practices.
+Allows you to quickly start building and deploying Django Python Apps To IBM Bluemix.
 
-## Features ##
+##To manually push this starter Django App to Bluemix using CF
 
-- Compatible with python 2.7 and 3.4
-- [Django compressor](http://django-compressor.readthedocs.org/en/latest/) to compress JS and CSS and compile LESS/SASS files.
-- [Django debug toolbar](http://django-debug-toolbar.readthedocs.org/) enabled for superusers.
-- [Bcrypt](https://docs.djangoproject.com/en/1.8/topics/auth/passwords/#using-bcrypt-with-django) to hash the passwords
-- [Django flat theme](https://github.com/elky/django-flat-theme) to style the admin.
-- A [fabfile](http://www.fabfile.org/) to ease the deployment.
+### Getting Started
 
-## Quickstart ##
+1. Create a Bluemix Account
 
-First create and activate your virtualenv, you can use [virtualenvwrapper](https://virtualenvwrapper.readthedocs.org/en/latest/). Then install Django 1.8 in your virtualenv:
+    [Sign up][sign_up] on Bluemix.net, or use an existing account. Runtimes are free to try for one month.
 
-    pip install django==1.8.6
+2. Download and install the [Cloud-foundry CLI][cloud_foundry] tool
 
-To create a new Django project (make sure to change `project_name`)
+3. Edit the `manifest.yml` file and change the `<application-name>` to something unique and modify the `<services-name>` to reflect your own Postgres SQL database service instance on Bluemix after you create it.
+```none
+applications:
+- name: <application-name>
+memory: 256M
+# This is command provided by cf -c option
+command: bash ./run.sh
+buildpack: https://github.com/cloudfoundry/python-buildpack
+path: .
+declared-services:
+<services-name>:
+label:postgresql
+plan:100
+services:
+- <services-name>
 
-    django-admin.py startproject --template=https://github.com/fasouto/django-starter-template/archive/master.zip --extension=py,md,html,txt,less project_name
 
-cd to your project and install the dependences
+```
 
-    pip install -r requirements/development.txt
+    The name you use will determinate your application url initially, e.g. `<application-name>.mybluemix.net`.
 
-If you need a database, edit the settings and create one with
-   
-    python manage.py syncdb
-    python manage.py migrate
+4. Connect to Bluemix in the command line tool
+  ```sh
+  $ cf api https://api.ng.bluemix.net
+  $ cf login -u <your user ID>
+  ```
 
-Once everything it's setup you can run the development server: [http://localhost:8000/](http://localhost:8000/)
+5. Create the PostGress Databse Service on in Bluemix
 
-    python manage.py runserver
+  ```sh
+  $ cf create-service postgresql "100" postgresqlmine
+  ```
 
-## How to use it ##
+6. Push it live!
 
-### Settings ###
+  ```sh
+  $ cf push
+  ```
 
-Settings are divided by environments: production.py, development.py and testing.py. By default it uses development.py, if you want to change the environment set a environment variable:
+## To automate the deployment of this starter template 
+Simply click on the deploy to bluemix button below to deploy this Django Python Application. 
 
-    export DJANGO_SETTINGS_MODULE="my_project.settings.production"
+[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](http://goo.gl/UWpUya)
 
-or you can use the `settings` param with runserver:
+<b>Directions</b>
+- Accept the default values for you the app location and name. 
+- The app will deploy however the initial application start will fail because you haven't created your postgress database service. 
+- The error messages in the DevOps pipeline services shows you haven't created your postgresql-qc database service.
+- Create the postgress service. I used "postgresql-qc" as the name in the manifest file.  
+- Bind the service to your app in the blumix dashboard  bluemix.net
+- Restart your app in Bluemix
+- Access the deployed app using the routesURL at the top of your app  routesURL/admin
+- Use admin for user id and password and start creating users.
+- Enjoy
 
-    python manage.py runserver --settings=my_project.settings.production
+## Troubleshooting
 
-If you need to add some settings that are specific for your machine, rename the file `local_example.py` to `local_settings.py`. This file it's in .gitignore so the changes won't be tracked.
+To troubleshoot your Bluemix app the main useful source of information are the logs, to see them, run:
 
-### Bootstrap ###
+  ```sh
+  $ cf logs <application-name> --recent
+  ```
 
-[Bootstrap 3](http://getbootstrap.com/css/#less) LESS files are included and compiled with django_compressor. There's an  file `less/app.less` where you should put your CSS to avoid overriding the bootstrap LESS files, so you can update bootstrap easily.
+## License
 
-Make sure you have [lessc](http://lesscss.org/#using-less-installation) installed on your production server, for development it uses less.js.
+  This sample code is licensed under Apache 2.0. Full license text is available in [LICENSE](LICENSE).
 
-### Dependencies ###
+## Contributing
 
-There are some [requirements files](https://pip.readthedocs.org/en/1.1/requirements.html) separated by environments (development and production), the requirements.txt in the root folder is needed for Heroku and only installs the production dependencies. In development you should install requirements/development.txt
-
-    pip install -r requirements/development.txt
-
-Remember to add the packages you install in your virtual environment to the appropiate requirements file.
-
-If you have trouble/can't install a package place it in the `/libs` directory.
+  See [CONTRIBUTING](CONTRIBUTING.md).
+  
+[service_url]: https://console.ng.bluemix.net/?ace_base=true#/store/cloudOEPaneId=store&orgGuid=0372034e-31d6-41b5-8843-819c07218821&spaceGuid=737c360d-c1c3-481f-923c-e7ee0b193c28&serviceOfferingGuid=7ca52cdd-ae04-4fac-b153-47f7805583e2&fromCatalog=true
+[cloud_foundry]: https://github.com/cloudfoundry/cli
+[getting_started]: https://console.ng.bluemix.net/solutions/web-applications
+[sign_up]: https://apps.admin.ibmcloud.com/manage/trial/bluemix.html

@@ -1,0 +1,16 @@
+---
+applications:
+- name: volatum
+  memory: 256M
+  command: bash ./run.sh
+  buildpack: python_buildpack
+  path: .
+  services:
+  - mypostgres
+  host: volatum
+declared-services:
+  mypostgres:
+    label: postgresql
+    plan: 100
+services:
+- mypostgres
