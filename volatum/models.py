@@ -6,23 +6,22 @@ from django.db import models
 # http://openflights.org/data.html
 class Airport(models.Model):
     airport_id = models.IntegerField()
-    name = models.CharField(max_length=50)
-    city = models.CharField(max_length=50)
-    country = models.CharField(max_length=50)
-    iata_faa = models.CharField(max_length=3)
-    icao = models.CharField(max_length=4)
+    name = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
+    country = models.CharField(max_length=100)
+    iata_faa = models.CharField(max_length=10)
+    icao = models.CharField(max_length=10)
     latitude = models.FloatField()
     longitude = models.FloatField()
     altitude = models.IntegerField()
     timezone_offset = models.IntegerField()
-    dst = models.CharField(max_length=1)
-    timezone_tz = models.CharField(max_length=50)
+    dst = models.CharField(max_length=100)
+    timezone_tz = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
 
 class NoFlyZone(models.Model):
-
 
 
     def __str__(self):
@@ -37,6 +36,13 @@ class Drone(models.Model):
     longitude = models.FloatField()
     altitude = models.IntegerField()
     last_seen = models.DateTimeField()
+
+    def __str__(self):
+        return self.name
+
+
+class Weather(models.Model):
+
 
     def __str__(self):
         return self.name

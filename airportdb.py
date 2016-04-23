@@ -12,3 +12,4 @@ def addToDB():
                         timezone_offset=line.split(',')[9], dst=line.split(',')[10], timezone_tz=line.split(',')[11])
             x.save()
 
+
