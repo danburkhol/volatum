@@ -75,7 +75,7 @@ def update_bootstrap(tag=None):
 
     Taken from: https://lextoumbourou.com/blog/posts/integrating-bootstrap-django-using-less-and-fabric/
     """
-    parent_path = os.path.join(os.path.dirname(__file__), '{{ project_name }}/static/vendor')
+    parent_path = os.path.join(os.path.dirname(__file__), 'volatum/static/vendor')
     local_path = os.path.join(parent_path, 'bootstrap')
 
     with settings(warn_only=True):
