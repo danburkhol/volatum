@@ -73,14 +73,53 @@
             {% endfor %}
             <!-- END Airport Warning Post -->
 
+            <!-- Drone Warning Post -->
+            {% for drone in input %}
+            <i class="fa fa-plane fa-2x" aria-hidden="true"></i>
+            <h2>
+                {{ Drone.name }}
+            </h2>
+            <p class="lead">
+                Type: Potential No-Fly Zone
+            </p>
+            <hr>
+            <p>
+                Latitude: {{ Drone.latitude }}
+                Longitude: {{ Drone.longitude }}
+            </p>
+
+            <div id="map"></div>
+            <script>
+                  function initMap() {
+                      var myLatLng = { lat: {{ Drone.latitude }}, lng:{{ Drone.longitude }}};
+
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                      zoom: 4,
+                      center: myLatLng
+                    });
+
+                    var marker = new google.maps.Marker({
+                      position: myLatLng,
+                      map: map,
+                      title: '{{ Drone.name }}'
+                    });
+                  }
+            </script>
+            <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClf55i7ai_BLWi1C__3gJsbT6CsLNuzV4&callback=initMap">
+            </script>
+            <hr>
+            {% endfor %}
+            <!-- END Drone Warning Post -->            
+
 
 
             <!-- Second Warning Post -->
             <h2>
-                WARNING
+                
             </h2>
             <p class="lead">
-                Type: WARNING TYPE
+                Type: Drone
             </p>
             <hr>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, veritatis, tempora, necessitatibus inventore nisi quam quia repellat ut tempore laborum possimus eum dicta id animi corrupti debitis ipsum officiis rerum.</p>
