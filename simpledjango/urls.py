@@ -21,7 +21,7 @@ urlpatterns = patterns('',
     url(r'^airport_test', 'volatum.views.airport'),
 
 
-    url(r'^drone$', 'volatum.views.drone', name='drone-check'),
+    url(r'^drone$', 'volatum.views.drone'),
 
 
 

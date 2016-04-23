@@ -1,5 +1,21 @@
 # Volatum
 
+Team Musk Entry for the 2016 NASA Space Apps Challenge hosted in Tampa, FL @ SOFWERX
+
+# Team Roster
+
+Daniel Burkholder
+
+Junior Recinos
+
+John Astafanous
+
+Stephen Astafanous
+
+Kevin McKernan
+
+
+
 ### Installation ###
 ```sh
 $ git clone https://github.com/danburkhol/volatum

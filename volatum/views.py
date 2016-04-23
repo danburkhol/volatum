@@ -1,8 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, QueryDict
+from django.template import RequestContext
 
-from volatum.models import Airport
+from volatum.models import Airport, Drone
 from airportdb import addToDB
+from drone import registerDrone
 
 # Create your views here.
 
@@ -29,23 +31,24 @@ def drone(request):
         #speed = request.get('speed')
         #alt = request.get('alt')
 
-        coordinates = (request.get('lat'), request.get('log'))
+        qd = request.POST
+        qd.dict()
+
+        rc = RequestContext(request)
+
+        coordinates = (request.POST.get('lat'), request.POST.get('log'))
         # If drone input has no lat or log
         if not coordinates:
             HttpResponse('Drone check input invalid, no latitude and longitude')
 
         drone_input = {'location':coordinates,
-                       'speed':request.get('speed'),
-                       'alt':request.get('alt'),
-                       'drone_id':request.get('drone_id')}
+                       'speed':request.POST.get('speed'),
+                       'alt':request.POST.get('alt'),
+                       'drone_id':request.POST.get('drone_id')}
 
+        registerDrone(drone_input)
 
-
-
-
-            
-
-        pass
+        render(request, 'volatum/index.html', {'drones':Drone.objects.all()}, rc)
 
 
 
