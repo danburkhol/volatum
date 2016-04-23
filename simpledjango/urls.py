@@ -14,6 +14,8 @@ urlpatterns = patterns('',
 
     url(r'^test2/', include('volatum.urls')),
 
+   url(r'^airport_test', 'volatum.views.airport'),
+
     url(r'^drone$', 'volatum.views.drone', name='drone-check'),
 
 

@@ -2,8 +2,9 @@ from django.db import models
 
 # Create your models here.
 
-#NO FLY ZONE data model
-class Airports(models.Model):
+# NO FLY ZONE data model
+# http://openflights.org/data.html
+class Airport(models.Model):
     airport_id = models.IntegerField()
     name = models.CharField(max_length=50)
     city = models.CharField(max_length=50)

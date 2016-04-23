@@ -1,14 +1,10 @@
 import NoFly
 
-import volatum.models
+from volatum.models import Airport
 
 def addToDB():
     with open("airports.dat", 'r') as f:
         for line in f:
-            Name = line.split(',')[1]
-            latR = line.split(',')[6]
-            longR = line.split(',')[7]
-
 
             x = Airport(airport_id=line.split(',')[0], name=line.split(',')[1], city=line.split(',')[2],
                         country=line.split(',')[3], iata_faa=line.split(',')[4], icao=line.split(',')[5],

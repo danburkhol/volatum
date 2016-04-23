@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿{% load staticfiles %}
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -7,19 +7,19 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>VOLATUM</title>
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="css/volatum.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/volatum.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    #map {
-    height: 200px;
-    }
 
 </head>
 <body>
@@ -40,24 +40,27 @@
             <h1 class="page-header">
                 VOLATUM
             </h1>
+
+
             <!-- Airport Warning Post -->
-            {% for Airports in airports %}
+            {% for airport in input %}
+            <i class="fa fa-plane fa-2x" aria-hidden="true"></i>
             <h2>
-                <i class="fa fa-plane" aria-hidden="true"></i>Airports.name
+                {{ airport.name }}
             </h2>
             <p class="lead">
                 Type: Potential No-Fly Zone
             </p>
             <hr>
             <p>
-                Latitude:Airports.latitude
-                Longitude:Airports.longitude
+                Latitude: {{ airport.latitude }}
+                Longitude: {{ airport.longitude }}
             </p>
 
             <div id="map"></div>
             <script>
                   function initMap() {
-                      var myLatLng = { lat: Airports.latitude, lng: Airports.longitude };
+                    var myLatLng = { lat: Airports.latitude, lng: Airports.longitude };
 
                     var map = new google.maps.Map(document.getElementById('map'), {
                       zoom: 4,
@@ -77,6 +80,9 @@
             <hr>
             {% endfor %}
             <!-- END Airport Warning Post -->
+
+
+
             <!-- Second Warning Post -->
             <h2>
                 WARNING
