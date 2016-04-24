@@ -132,7 +132,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Flight Information</h2>
+                    <h2>Nearby No-Fly Zones</h2>
                     <hr>
                 </div>
             </div>
@@ -141,36 +141,38 @@
                     <!-- Airport Warning Post -->
 
                     {% for airport in airport_data %}
-                    <i class="fa fa-plane fa-2x" aria-hidden="true"></i>
-                    <h2>
-                        {{ airport.name }}
-                    </h2>
-                    <p class="lead">
-                        Type: Potential No-Fly Zone
-                    </p>
-                    <hr>
-                    <p>
-                        Latitude: {{ airport.latitude }}
-                        Longitude: {{ airport.longitude }}
-                    </p>
+                    <div>
+                        <i class="fa fa-plane fa-2x" aria-hidden="true"></i>
+                        <h2>
+                            {{ airport.name }}
+                        </h2>
+
+                        <p>
+                            Latitude: {{ airport.latitude }}
+                            Longitude: {{ airport.longitude }}
+                        </p>
+                    </div>
                     {% endfor %}
 
                             <!-- END Airport Warning Post -->
                             <!-- Drone Warning Post -->
 
                     {% for drone in drone_data %}
-                    <i class="fa fa-plane fa-2x" aria-hidden="true"></i>
-                    <h2>
-                        {{ Drone.name }}
-                    </h2>
-                    <p class="lead">
-                        Type: Potential No-Fly Zone
-                    </p>
-                    <hr>
-                    <p>
-                        Latitude: {{ Drone.latitude }}
-                        Longitude: {{ Drone.longitude }}
-                    </p>
+                    <div>
+                        <i class="fa fa-plane fa-2x" aria-hidden="true"></i>
+                        <h2>
+                            {{ Drone.name }}
+                        </h2>
+                        <p class="lead">
+                            Type: Potential No-Fly Zone
+                        </p>
+                        <hr>
+                        <p>
+                            Latitude: {{ Drone.latitude }}
+                            Longitude: {{ Drone.longitude }}
+                        </p>
+                    </div>
+
                     {% endfor %}
 
                     <!-- END Drone Warning Post -->

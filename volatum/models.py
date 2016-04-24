@@ -9,6 +9,16 @@ class Airport(models.Model):
     name = models.CharField(max_length=100)
     latitude = models.FloatField()
     longitude = models.FloatField()
+    city = models.IntegerField()
+
+    def __str__(self):
+        return self.name
+
+class AirportN(models.Model):
+    airport_id = models.IntegerField()
+    name = models.CharField(max_length=100)
+    latitude = models.FloatField()
+    longitude = models.FloatField()
 
     def __str__(self):
         return self.name
@@ -28,7 +38,7 @@ class Drone(models.Model):
     longitude = models.FloatField()
     altitude = models.IntegerField()
     last_seen = models.DateTimeField()
-    bearing = models.FloatField()
+    #bearing = models.FloatField()
 
     def __str__(self):
         return self.name

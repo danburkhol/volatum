@@ -23,6 +23,7 @@ def registerDrone(drone_input):
     d.latitude = drone_input['location'][0]
     d.longitude = drone_input['location'][1]
     d.altitude = drone_input['alt']
+    #d.bearing = drone_input['bearing']
     d.last_seen = datetime.now()
 
     d.save()
