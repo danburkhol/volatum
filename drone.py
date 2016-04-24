@@ -19,9 +19,6 @@ def registerDrone(drone_input):
         # If it's not in the database, create a new entry
         d = Drone(drone_id=drone_input['drone_id'])
 
-    # If it's not in the database, create a new entry
-    #if not d:
-    #    d = Drone(drone_id=drone_input['drone_id'])
 
     d.latitude = drone_input['location'][0]
     d.longitude = drone_input['location'][1]

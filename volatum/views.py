@@ -3,8 +3,8 @@ from django.http import HttpResponse, QueryDict
 from django.template import RequestContext
 
 from volatum.models import Airport, Drone
-from airportdb import addToDB
-from drone import registerDrone, mkDrone
+from NoFly import addDB
+from drone import registerDrone
 
 # Create your views here.
 
@@ -18,29 +18,31 @@ def zipsearch(request):
     return HttpResponse(request.get_full_path())
 
 def addAirPortsToDB(request):
-    addToDB()
+    addDB()
 
 
 def drone(request):
     # Example POST request from Drone data
     # volatum.mybluemix.net/drone?lat=VALUE&log=VALUE&speed=VALUE&alt=VALUE
 
-    if request.method == 'GET':
 
+    try:
         coordinates = (float( request.GET.__getitem__('lat').encode('utf8') ), float( request.GET.__getitem__('log').encode('utf8') ) )
+    except:
+        return render(request, 'volatum/index.html', {'drones': Drone.objects.all()})
 
-        # If drone input has no lat or log
-        if not coordinates:
-            # Exit the request
-            return HttpResponse('Drone check input invalid, no latitude and longitude')
+    # If drone input has no lat or log
+    if not coordinates:
+        # Exit the request
+        return HttpResponse('Drone check input invalid, no latitude and longitude')
 
 
-        drone_input = {'location':coordinates,
-                       'speed':float(request.GET.__getitem__('speed').encode('utf8')),
-                       'alt':int(request.GET.__getitem__('alt').encode('utf8')),
-                       'drone_id':request.GET.__getitem__('drone_id').encode('utf8')}
+    drone_input = {'location':coordinates,
+                   'speed':float(request.GET.__getitem__('speed').encode('utf8')),
+                   'alt':int(request.GET.__getitem__('alt').encode('utf8')),
+                   'drone_id':request.GET.__getitem__('drone_id').encode('utf8')}
 
-        registerDrone(drone_input)
+    registerDrone(drone_input)
 
 
     return render(request, 'volatum/index.html', {'drones': Drone.objects.all()})
