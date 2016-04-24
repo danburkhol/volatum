@@ -138,8 +138,8 @@
             <div class="row">
                 <div class="col-md-8">
                     <!-- Airport Warning Post -->
-                    <!--
-                    {% for airport in input %}
+
+                    {% for airport in airport_data %}
                     <i class="fa fa-plane fa-2x" aria-hidden="true"></i>
                     <h2>
                         {{ airport.name }}
@@ -153,11 +153,11 @@
                         Longitude: {{ airport.longitude }}
                     </p>
                     {% endfor %}
-                        -->
+
                             <!-- END Airport Warning Post -->
                             <!-- Drone Warning Post -->
-                            <!--
-                    {% for drone in input %}
+
+                    {% for drone in drone_data %}
                     <i class="fa fa-plane fa-2x" aria-hidden="true"></i>
                     <h2>
                         {{ Drone.name }}
@@ -171,7 +171,7 @@
                         Longitude: {{ Drone.longitude }}
                     </p>
                     {% endfor %}
-                    -->
+
                     <!-- END Drone Warning Post -->
                     <!-- Third Warning Post -->
                     <div class="well">

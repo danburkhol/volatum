@@ -10,8 +10,14 @@ from drone import registerDrone
 
 def index(request):
     #addToDB()
+    try:
+        airports = Airport.objects.all()
+        drone_data = Drone.object.all()
+    except:
+        pass
 
-    return HttpResponse("Hello, world.")
+
+    return render(request, 'demo/index.html', {'airport_data':airports, 'drone_data':drone_data})
 
 
 def zipsearch(request):
@@ -50,32 +56,9 @@ def drone(request):
 
 
 def airport(request):
-    #airports = Airports.objects.all()
-    #for x in airports:
-    #    print(x)
-
-
-    x = Airport(airport_id=4, name='dullas', city='amazon',
-
-                 country='united states of swag', iata_faa='PWN', icao='LEET',
-
-                 latitude=58.39405, longitude=47.12830, altitude=68,
-
-                 timezone_offset=5, dst=1, timezone_tz='New York/Americas')
-
-    y = Airport(airport_id=4, name='dullas', city='amazon',
-
-                country='united states of swag', iata_faa='PWN', icao='LEET',
-
-                latitude=58.39405, longitude=47.12830, altitude=68,
-
-                timezone_offset=5, dst=1, timezone_tz='New York/Americas')
-
-    input = [x, y]
-
 
     #render(request, template, {key:value of data})
-    return render(request, 'volatum/index.html', {'input':input})
+    return render(request, 'volatum/index.html', {'input':Airport.objects.all()})
 
 
 def airportdb(request):

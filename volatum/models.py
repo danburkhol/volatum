@@ -28,6 +28,7 @@ class Drone(models.Model):
     longitude = models.FloatField()
     altitude = models.IntegerField()
     last_seen = models.DateTimeField()
+    bearing = models.FloatField()
 
     def __str__(self):
         return self.name

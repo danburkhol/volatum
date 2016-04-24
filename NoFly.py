@@ -112,7 +112,9 @@ def addDB():
     x = getLong()
 
 
+    Airport.objects.all()
     for a in range(0, len(i)):
+
         b = Airport(i[a], l[a], z[a], x[a])
         b.save()
 
