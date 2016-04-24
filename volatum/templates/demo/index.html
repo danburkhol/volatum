@@ -1,6 +1,4 @@
-﻿{% load staticfiles %}
-
-<html lang="en">
+﻿<html lang="en">
 
 <head>
 
@@ -13,13 +11,13 @@
     <title>Volatum</title>
 
     <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="{% static 'css/volatum.css' %}" rel="stylesheet">
+    <link href="css/volatum.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
@@ -96,10 +94,10 @@
             </div>
             <div class="row">
                 <div class="col-lg-4 col-lg-offset-2">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, veritatis, tempora, necessitatibus inventore nisi quam quia repellat ut tempore laborum possimus eum dicta id animi corrupti debitis ipsum officiis rerum.</p>
+                    <p> It is our challenge to promote unique solutions while continuing utilize high standards in our methods to develop an application to aid drone pilots</p>
                 </div>
                 <div class="col-lg-4">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, veritatis, tempora, necessitatibus inventore nisi quam quia repellat ut tempore laborum possimus eum dicta id animi corrupti debitis ipsum officiis rerum.</p>
+                    <p>Volatum application to assist drones and their pilots by providing the with valuable real time information.</p>
                 </div>
             </div>
         </div>
@@ -139,7 +137,7 @@
             <div class="row">
                 <div class="col-md-8">
                     <!-- Airport Warning Post -->
-
+                    <!--
                     {% for airport in airport_data %}
                     <div>
                         <i class="fa fa-plane fa-2x" aria-hidden="true"></i>
@@ -153,10 +151,10 @@
                         </p>
                     </div>
                     {% endfor %}
-
+                        -->
                             <!-- END Airport Warning Post -->
                             <!-- Drone Warning Post -->
-
+                    <!--
                     {% for drone in drone_data %}
                     <div>
                         <i class="fa fa-plane fa-2x" aria-hidden="true"></i>
@@ -174,29 +172,29 @@
                     </div>
 
                     {% endfor %}
-
+                        -->
                     <!-- END Drone Warning Post -->
                     <!-- Third Warning Post -->
                     <div class="well">
                         <h2>
-                            WARNING
+                            Tampa International Airport
                         </h2>
-                        
-
                         <p class="lead">
-                            Type: WARNING TYPE
+                            Type: Potential No-Fly Zone
                         </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, veritatis, tempora, necessitatibus inventore nisi quam quia repellat ut tempore laborum possimus eum dicta id animi corrupti debitis ipsum officiis rerum.</p>
+                        <p>Latitude:27.9835 Longitude:-82.5371<br />
+                        Potential No-Fly Zone: Check local rules and regulations</p>
                     </div>
                     <!-- Third Warning Post -->
                     <div class="well">
                         <h2>
-                            WARNING
+                            Drone 6TeukCX2xv
                         </h2>
                         <p class="lead">
-                            Type: WARNING TYPE
+                            Type: Registered Drone
                         </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, veritatis, tempora, necessitatibus inventore nisi quam quia repellat ut tempore laborum possimus eum dicta id animi corrupti debitis ipsum officiis rerum.</p>
+                        <p>Near by Registered Drone. Id:6TeukCX2xv<br />
+                            Latitude:27.981325 Longitude:-82.537660</p>
                     </div>
 
                 </div>
