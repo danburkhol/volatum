@@ -2,7 +2,7 @@ import math
 import Location
 from volatum.models import Airport
 
-def offlimit (lat, long, rad = 5, mph = 0):
+def offlimit (lat, long, rad = 10, mph = 0):
     with open("airports.dat", 'r') as f:
         for line in f:
             for i in range(1,20):
@@ -99,23 +99,16 @@ def findDis(lat1, lat2, long1, long2, count = 0 ):
     return miles
 
 def addDB():
-    coord = Location.getLocation()
-    #rad = int(input('rad: '))
-    offlimit = offlimit(coord[0], coord[1])
-    settings = True
-    if offlimit:
-        dontfly(settings)
-        print(offlimit)
     n = getNames()
     i = getID()
     z = getLat()
     x = getLong()
 
-
     Airport.objects.all()
+
     for a in range(0, len(i)):
 
-        b = Airport(i[a], l[a], z[a], x[a])
+        b = Airport(airport_id=i[a], name=n[a], latitude=z[a], longitutde=x[a])
         b.save()
 
 

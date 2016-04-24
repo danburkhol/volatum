@@ -11,13 +11,16 @@ from drone import registerDrone
 def index(request):
     #addToDB()
     try:
-        airports = Airport.objects.all()
+        #airports = Airport.objects.all()
         drone_data = Drone.object.all()
+
+        return render(request, 'demo/index.html', {'airport_data': airports, 'drone_data': drone_data})
+
     except:
-        pass
+        return HttpResponse('Hello')
 
 
-    return render(request, 'demo/index.html', {'airport_data':airports, 'drone_data':drone_data})
+
 
 
 def zipsearch(request):
@@ -25,6 +28,8 @@ def zipsearch(request):
 
 def addAirPortsToDB(request):
     addDB()
+
+    return HttpResponse('Added to DB')
 
 
 def drone(request):
