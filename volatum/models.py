@@ -46,3 +46,13 @@ class Weather(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Elevation(models.Model):
+    latitude = models.FloatField()
+    longitude = models.FloatField()
+    elevation = models.FloatField()
+
+
+    def __str__(self):
+        return self.name

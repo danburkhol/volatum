@@ -1,20 +1,12 @@
 # Volatum
-
 Team Musk Entry for the 2016 NASA Space Apps Challenge hosted in Tampa, FL @ SOFWERX
 
 # Team Roster
-
-Daniel Burkholder
-
-Junior Recinos
-
-John Astafanous
-
-Stephen Astafanous
-
-Kevin McKernan
-
-
+- Daniel Burkholder
+- Junior Recinos
+- John Astafanous
+- Stephen Astafanous
+- Kevin McKernan
 
 ### Installation ###
 ```sh
@@ -29,16 +21,21 @@ $ python manage.py runserver
 ```
 
 
-### Example POST Request to get drone area conditions ###
+### Example HTTP GET Request to get drone area conditions ###
 ```sh
-volatum.mybluemix.net/drone?lat=VALUE&log=VALUE&speed=VALUE&alt=VALUE
+http://volatum.mybluemix.net/drone?speed=3&alt=20&lat=27.5000&log=-82.00&drone_id=1337bluemixertest
 ```
 
-### Run the local server ###
+### Examples ###
 ```sh
 http://volatum.mybluemix.net/
 http://volatum.mybluemix.net/airport_test
 http://volatum.mybluemix.net/airport_test_db
 http://volatum.mybluemix.net/drone
 
+```
+
+### Run the local server ###
+```sh
+$ python manage.py runserver
 ```

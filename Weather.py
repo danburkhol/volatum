@@ -1,5 +1,6 @@
 #from datetime import datetime
 #from volatum.models import Drone
+from volatum.models import Weather
 import urllib.request
 import json
 

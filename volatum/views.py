@@ -4,7 +4,7 @@ from django.template import RequestContext
 
 from volatum.models import Airport, Drone
 from airportdb import addToDB
-from drone import registerDrone
+from drone import registerDrone, mkDrone
 
 # Create your views here.
 
@@ -25,34 +25,26 @@ def drone(request):
     # Example POST request from Drone data
     # volatum.mybluemix.net/drone?lat=VALUE&log=VALUE&speed=VALUE&alt=VALUE
 
-    if request.method == 'POST':
-        #lat = request.get('lat')
-        #log = request.get('log')
-        #speed = request.get('speed')
-        #alt = request.get('alt')
+    if request.method == 'GET':
 
-        qd = request.POST
-        qd.dict()
+        coordinates = (float( request.GET.__getitem__('lat').encode('utf8') ), float( request.GET.__getitem__('log').encode('utf8') ) )
 
-        rc = RequestContext(request)
-
-        coordinates = (request.POST.get('lat'), request.POST.get('log'))
         # If drone input has no lat or log
         if not coordinates:
-            HttpResponse('Drone check input invalid, no latitude and longitude')
+            # Exit the request
+            return HttpResponse('Drone check input invalid, no latitude and longitude')
+
 
         drone_input = {'location':coordinates,
-                       'speed':request.POST.get('speed'),
-                       'alt':request.POST.get('alt'),
-                       'drone_id':request.POST.get('drone_id')}
+                       'speed':float(request.GET.__getitem__('speed').encode('utf8')),
+                       'alt':int(request.GET.__getitem__('alt').encode('utf8')),
+                       'drone_id':request.GET.__getitem__('drone_id').encode('utf8')}
 
         registerDrone(drone_input)
 
-        render(request, 'volatum/index.html', {'drones':Drone.objects.all()}, rc)
 
+    return render(request, 'volatum/index.html', {'drones': Drone.objects.all()})
 
-
-    return HttpResponse("Drone Check - Hello, George :) ")
 
 
 def airport(request):
