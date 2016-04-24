@@ -1,6 +1,6 @@
 import math
 import Location
-from volatum.models import AirportN
+from volatum.models import Airport
 
 def offlimit (lat, long, rad = 10, mph = 0):
     with open("airports.dat", 'r') as f:
@@ -104,11 +104,11 @@ def addDB():
     z = getLat()
     x = getLong()
 
-    AirportN.objects.all()
+    Airport.objects.all()
 
     for a in range(0, len(i)):
 
-        b = AirportN(airport_id=i[a], name=n[a], latitude=z[a], longitude=x[a])
+        b = Airport(airport_id=i[a], name=n[a], latitude=z[a], longitutde=x[a])
         b.save()
 
 

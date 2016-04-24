@@ -5,5 +5,5 @@ else SERVER_PORT="$VCAP_APP_PORT";
 fi
 echo port is------------------- $SERVER_PORT
 #!/bin/bash
-python manage.py migrate
 python manage.py syncdb --noinput
+python manage.py migrate

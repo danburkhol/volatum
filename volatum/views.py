@@ -2,19 +2,24 @@ from django.shortcuts import render
 from django.http import HttpResponse, QueryDict
 from django.template import RequestContext
 
-from volatum.models import AirportN, Drone
+from volatum.models import Airport, Drone
 from NoFly import addDB
 from drone import registerDrone
 
 # Create your views here.
 
 def index(request):
+    #addToDB()
+    try:
+        #airports = Airport.objects.all()
+        drone_data = Drone.object.all()
+
+        return render(request, 'demo/index.html', {'airport_data': airports, 'drone_data': drone_data})
+
+    except:
+        return HttpResponse('Hello')
 
 
-    airports = [AirportN(airport_id=523, name='Tampa Intl Airport', latitude=27.9835, longitude=82.5371), ]
-    drones = Drone.objects.all()
-
-    return render(request, 'demo/index.html', {'airport_data': airports, 'drone_data': drones})
 
 
 
